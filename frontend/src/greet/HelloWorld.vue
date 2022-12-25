@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import {reactive, inject} from 'vue'
-import {Greet, GreetDependencyNotFound} from "./greet";
+import {Greet} from "./greet";
 import injectionKeys from "../injectionKeys";
+import {GreetDependencyNotFound} from "./greet.configurator";
 
 const greeter = inject<Greet>(injectionKeys.GREET) ?? new GreetDependencyNotFound()
 

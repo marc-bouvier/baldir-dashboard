@@ -1,6 +1,5 @@
 import {GreetWails} from "./greet.wails";
 import type {Greet} from "./greet"
-import {GreetDependencyNotFound} from "./greet";
 import {GreetTestDouble} from "./greet.test-double";
 
 // See Alistair Cockburn's : Component + Strategies
@@ -35,5 +34,17 @@ export class GreetConfigurator {
             return new GreetTestDouble(testDoubleConfiguration.defaultGreetName)
         }
         return new GreetDependencyNotFound()
+    }
+}
+
+
+export class GreetDependencyNotFound implements Greet {
+    constructor() {
+        throw new Error("Greet dependency was not injected")
+    }
+
+    greet(name: string): Promise<string> {
+        // TODO : antipattern : one should not need to override No-op.
+        throw new Error("unsupported operation")
     }
 }
