@@ -2,11 +2,13 @@
 
 == Roadmap
 
+* Introduire les tests en Typescript
+* Introduire les tests en Go
 * Lister les progressions des objectifs fils rouge
 ** parser un fichier markdown avec un frontmatter
 ** récupérer les bonnes métadonnées
 * Rendre le module fils rouges indépendant et configurable
-* Découpler de wails
+* [.line-through]#Découpler de wails#
 * eslint
 * prettier
 * pre-commit hook
