@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-import {reactive} from 'vue'
-import {Greet} from '../../wailsjs/go/main/App'
+import {reactive, inject} from 'vue'
+import {Greet, GreetDependencyNotFound} from "./greet";
+import injectionKeys from "../injectionKeys";
+
+const greeter = inject<Greet>(injectionKeys.GREET) ?? new GreetDependencyNotFound()
 
 const data = reactive({
   name: "",
@@ -8,7 +11,8 @@ const data = reactive({
 })
 
 function greet() {
-  Greet(data.name).then(result => {
+
+  greeter.greet(data.name).then(result => {
     data.resultText = result
   })
 }
